@@ -1,0 +1,118 @@
+.lobby {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.lobby-panel {
+  background: var(--panel);
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.online-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.online-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+
+.online-user .id {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.invite {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent-2);
+  cursor: pointer;
+}
+
+.invite:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.self {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.invite-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  margin-bottom: 10px;
+}
+
+.invite-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.accept {
+  background: #d7f3e3;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.decline {
+  background: #f6d7d7;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.ghost {
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.notifications {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.notification {
+  font-size: 12px;
+  color: var(--accent);
+}

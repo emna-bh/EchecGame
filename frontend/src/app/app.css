@@ -1,0 +1,52 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 24px 36px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #426bf4, #f817d3);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #fffdfd;
+  box-shadow: 0 10px 30px rgba(226, 9, 197, 0.35);
+}
+
+.brand-title {
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.brand-sub {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(34, 34, 34, 0.6);
+}
+
+.app-main {
+  flex: 1;
+  padding: 24px 36px 48px;
+}
+
+@media (max-width: 720px) {
+  .app-header,
+  .app-main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

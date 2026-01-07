@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #f5efe6;
+  --panel: #ffffff;
+  --ink: #1b1b1b;
+  --muted: #5d5d5d;
+  --accent: #f45b69;
+  --accent-2: #f4b942;
+  --line: rgba(27, 27, 27, 0.12);
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top left, rgba(244, 185, 66, 0.25), transparent 55%),
+    radial-gradient(circle at 20% 60%, rgba(244, 91, 105, 0.18), transparent 55%),
+    var(--bg);
+}
+
+h1, h2, h3 {
+  font-family: 'Libre Baskerville', serif;
+  margin: 0 0 12px;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}

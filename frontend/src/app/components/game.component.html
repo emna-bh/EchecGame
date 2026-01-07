@@ -1,0 +1,82 @@
+<div class="game-layout">
+  <section class="board-panel">
+    <div class="toast" *ngIf="toast" [class.win]="toastType === 'win'" [class.lose]="toastType === 'lose'">
+      <span class="toast-icon">{{ toastIcon }}</span>
+      {{ toast }}
+    </div>
+    <div class="board-header">
+      <h2>Plateau</h2>
+      <div class="status">
+        <span *ngIf="myColor" class="color-chip">
+          Couleur: {{ myColor }}
+          <span class="pawn-icon" [class.white]="myColor === 'white'" [class.black]="myColor === 'black'">
+            {{ myColor === 'white' ? '♙' : '♟︎' }}
+          </span>
+        </span>
+        <span>Tour: {{ isMyTurn() ? 'vous' : 'adversaire' }}</span>
+      </div>
+    </div>
+
+    <div class="board-wrapper" [class.my-turn]="isMyTurn()">
+      <div class="rank-labels">
+        <span *ngFor="let rank of ranks; trackBy: trackByIndex">{{ rank }}</span>
+      </div>
+      <div class="board">
+        <div class="rank" *ngFor="let rank of ranks; let r = index; trackBy: trackByIndex">
+          <div
+            class="square"
+            *ngFor="let file of files; let f = index; trackBy: trackByIndex"
+            [class.dark]="(f + r) % 2 === 1"
+            [class.selected]="isSelected(file, rank)"
+            (click)="selectSquare(file, rank)"
+          >
+            {{ pieceLabel(getPiece(file, rank)) }}
+          </div>
+        </div>
+      </div>
+      <div class="file-labels">
+        <span *ngFor="let file of files; trackBy: trackByIndex">{{ file }}</span>
+      </div>
+    </div>
+
+    <div class="status-message" *ngIf="status">{{ status }}</div>
+    <div class="game-over" *ngIf="gameOver">
+      <strong>Partie terminee:</strong> {{ gameOverMessage }}
+    </div>
+    <button class="resign" (click)="resign()" [disabled]="gameOver">Abandonner</button>
+  </section>
+
+  <section class="moves-panel">
+    <div class="moves-header">
+      <h2>Historique</h2>
+      <span class="badge" *ngIf="!isLiveView()">Replay</span>
+    </div>
+    <div class="moves">
+      <div class="move" *ngFor="let move of moves; trackBy: trackByIndex">
+        <strong>{{ move.moveNumber }}.</strong>
+        {{ pieceLetter(move.piece) }} {{ move.fromSquare.toUpperCase() }}-{{ move.toSquare.toUpperCase() }}
+      </div>
+    </div>
+
+    <div class="replay-panel">
+      <div class="replay-controls">
+        <button (click)="stepBack()" [disabled]="replayIndex === 0" aria-label="Reculer">⏮</button>
+        <button (click)="startReplay()" [disabled]="isReplaying" aria-label="Lire">▶</button>
+        <button (click)="pauseReplay()" [disabled]="!isReplaying" aria-label="Pause">⏸</button>
+        <button (click)="stepForward()" [disabled]="replayIndex >= moves.length" aria-label="Avancer">⏭</button>
+        <button (click)="resetReplay()" aria-label="Reset">⟲</button>
+        <button (click)="exitReplay()" [disabled]="isLiveView()" aria-label="Live">●</button>
+      </div>
+      <div class="replay-range">
+        <input
+          type="range"
+          min="0"
+          [max]="moves.length"
+          [value]="replayIndex"
+          (input)="onReplayIndexChange($any($event.target).valueAsNumber)"
+        />
+        <div class="replay-count">{{ replayIndex }} / {{ moves.length }}</div>
+      </div>
+    </div>
+  </section>
+</div>

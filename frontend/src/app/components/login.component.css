@@ -1,0 +1,76 @@
+.auth-shell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.auth-card {
+  width: min(420px, 100%);
+  background: var(--panel);
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+
+.auth-header p {
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  cursor: pointer;
+}
+
+.auth-tabs button.active {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #1b1b1b;
+  border-color: transparent;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+input {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.primary {
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.error {
+  color: var(--accent);
+  font-size: 13px;
+}

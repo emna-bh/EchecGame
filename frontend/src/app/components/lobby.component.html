@@ -1,0 +1,45 @@
+<div class="lobby">
+  <section class="lobby-panel">
+    <div class="panel-header">
+      <h2>Joueurs en ligne</h2>
+      <button class="ghost" (click)="logout()">Se deconnecter</button>
+    </div>
+    <div class="online-list" *ngIf="onlineUsers$ | async as onlineUsers">
+      <div class="online-user" *ngFor="let user of onlineUsers">
+        <div>
+          <strong>{{ user.username }}</strong>
+          <div class="id">#{{ user.id }}</div>
+        </div>
+        <button
+          class="invite"
+          *ngIf="user.id !== selfId"
+          (click)="sendInvite(user.id)"
+          [disabled]="pendingInvites.has(user.id)"
+        >
+          {{ pendingInvites.has(user.id) ? 'Invitation envoyee' : 'Inviter' }}
+        </button>
+        <span class="self" *ngIf="user.id === selfId">Vous</span>
+      </div>
+      <div class="empty" *ngIf="onlineUsers.length === 0">Aucun joueur connecte.</div>
+    </div>
+  </section>
+
+  <section class="lobby-panel">
+    <h2>Invitations</h2>
+    <div class="invite-card" *ngFor="let invite of invites">
+      <div>
+        <strong>{{ invite.fromUsername }}</strong>
+        <div class="muted">souhaite jouer contre vous</div>
+      </div>
+      <div class="invite-actions">
+        <button class="accept" (click)="acceptInvite(invite)">Accepter</button>
+        <button class="decline" (click)="declineInvite(invite)">Refuser</button>
+      </div>
+    </div>
+    <div class="empty" *ngIf="invites.length === 0">Aucune invitation pour le moment.</div>
+
+    <div class="notifications" *ngIf="notifications.length">
+      <div class="notification" *ngFor="let note of notifications">{{ note }}</div>
+    </div>
+  </section>
+</div>
